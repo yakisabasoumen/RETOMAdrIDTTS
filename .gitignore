@@ -1,0 +1,32 @@
+# Entornos virtuales
+
+consultasWeb310/bin/
+consultasWeb310/lib/
+consultasWeb310/lib64/
+consultasWeb310/include/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Archivos del sistema
+.DS_Store
+
+# Dependencias locales pesadas
+lib/
+lib64/
+include/
+bin/
+share/
+pyvenv.cfg
+
+# Modelos de IA (MUY importante)
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.onnx
+
+# Carpeta de modelos (si tienes alguna)
+models/
+checkpoints/
