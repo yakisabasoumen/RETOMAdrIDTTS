@@ -1,0 +1,35 @@
+.samples {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+}
+
+
+button {
+  pointer-events: auto;
+  z-index: 10;
+  margin: 0 auto;
+  width: min-content;
+  height: min-content;
+  display: flex;           /* convierte el botón en contenedor flex */
+  justify-content: center; /* centra horizontalmente el texto/icono */
+  align-items: center;     /* centra verticalmente */
+  font-size: 18px;
+}
+
+div {
+    display: flex;
+    flex-direction: column;
+}
+
+h4 {
+    padding-top: 8px;
+}
+
+.descargaboton {
+  margin-top: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

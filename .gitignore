@@ -30,3 +30,5 @@ pyvenv.cfg
 # Carpeta de modelos (si tienes alguna)
 models/
 checkpoints/
+
+.vscode/
