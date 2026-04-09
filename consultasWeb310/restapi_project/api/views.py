@@ -7,13 +7,28 @@ from rest_framework import status
 from .models import Task
 from .serializers import TaskSerializer
 import torch
-from TTS.api import TTS
-from django.conf import settings
+from functools import partial
+
+# Parchear torch.load ANTES de importar TTS
+_original_load = torch.load
+torch.load = partial(_original_load, weights_only=False)
+
+from django.shortcuts import render
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from rest_framework import status
+from .models import Task
+from .serializers import TaskSerializer
 import os
+import torchaudio
+from TTS.api import TTS
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
-tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
+tts = None
 
+if os.environ.get("RUN_MAIN") == "true":
+    print("Cargando TTS...")
+    tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2").to(device)
 @api_view(['GET', 'POST'])
 def task_list(request):
     if request.method == 'GET':
