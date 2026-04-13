@@ -39,13 +39,18 @@ def task_list(request):
     if request.method == 'POST':
         try:
             serializer = TaskSerializer(data=request.data)
-
+            print(request.data)
             if serializer.is_valid():
                 serializer.save()
 
+                if(request.data["voz"] == "Susana"):
+                    speaker = "api/Susana2Lento.wav"
+                elif(request.data["voz"] == "Cuba"):
+                    speaker = "api/vozcubana.wav"
+
                 tts.tts_to_file(
                     text=serializer.data["description"],
-                    speaker_wav="api/vozcubana.wav",
+                    speaker_wav=speaker,
                     language="es",
                     speed=0.25,
                     file_path="media/cubasample.wav"
@@ -55,7 +60,7 @@ def task_list(request):
         
                 return Response({
                     "task": serializer.data,
-                    "audio_url": request.build_absolute_uri("/media/cubasample.wav")
+                    "audio_url": request.build_absolute_uri("/media/cubasample.wav"),
                 })
 
             print("❌ Serializer error:", serializer.errors)

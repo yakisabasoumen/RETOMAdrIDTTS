@@ -5,6 +5,7 @@ function Form({ setAudioData }) {
     const [description, setDescription] = useState("");
     const [loading, setLoading] = useState(false);
     const [consultas, setConsultas] = useState(1);
+    const [voz, setVoz] = useState("Susana");
 
     const handleAdd = (event) => {
         event.preventDefault();
@@ -18,7 +19,7 @@ function Form({ setAudioData }) {
                 'Content-Type': 'application/json'
             },
             method: "POST",
-            body: JSON.stringify({ title, description }),
+            body: JSON.stringify({ title, description, voz }),
         }).then(response => response.json())
           .then(data => {
                 if(data.audio_url) {
@@ -49,6 +50,14 @@ return (
                         }}
                         disabled={loading}
                     />
+                    <label>Elige la voz que quieras utilizar: </label>
+                    <select onChange={(event) =>{
+                        setVoz(event.target.value)
+                        console.log(voz)
+                    }} defaultValue={"Susana"} name='vozelegida' id='vozelegida' required>
+                        <option value="Susana">Susana</option>
+                        <option value="Cuba">Cuba</option>
+                    </select>
                     <button type="submit" disabled={loading}>{loading ? "Cargando..." : "Generar Audio"}</button>
                 </form>
             </div>

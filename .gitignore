@@ -4,6 +4,7 @@ consultasWeb310/bin/
 consultasWeb310/lib/
 consultasWeb310/lib64/
 consultasWeb310/include/
+consultasWeb310/restapi_project/media
 
 # Python cache
 __pycache__/
