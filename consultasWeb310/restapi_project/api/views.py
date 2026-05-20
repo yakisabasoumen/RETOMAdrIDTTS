@@ -44,9 +44,10 @@ def task_list(request):
                 serializer.save()
 
                 if(request.data["voz"] == "Susana"):
-                    speaker = "api/Susana2Lento.wav"
+                    # speaker = "api/Susana2Lento.wav"
+                    speaker = "api/Grabación (30).wav"
                 elif(request.data["voz"] == "Cuba"):
-                    speaker = "api/vozcubana.wav"
+                    speaker = "api/vozcubanamejorcalidad.wav"
 
                 tts.tts_to_file(
                     text=serializer.data["description"],
